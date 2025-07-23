@@ -1,8 +1,6 @@
 const { Ticket } = require("../models")
 
 async function createTicket(req, res) {
-    console.log("btgrfegffd req.body", req.body)
-
     if (!req.body.flyNumber || !req.body.company || !req.body.origin || !req.body.destination ||
         !req.body.start || !req.body.end || !req.body.namePassenger || !req.body.seat || !req.body.price) {
         return res.status(400).send({
@@ -11,6 +9,7 @@ async function createTicket(req, res) {
     }
 
     const { flyNumber, company, origin, destination, start, end, namePassenger, seat, price } = req.body;
+
     try {
         const ticket = await Ticket.create({
             flyNumber,
