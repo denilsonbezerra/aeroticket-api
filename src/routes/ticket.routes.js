@@ -1,8 +1,11 @@
 const express = require("express");
-const {createTicket, getTicket} = require("../controllers/ticket.controller");
+const ticketController = require("../controllers/ticket.controller");
 const router = express.Router();
 
-router.post("/", createTicket);
-router.get("/", getTicket);
+router.post("/", ticketController.createTicket)
+router.get("/", ticketController.getTickets)
+router.get("/:flyNumber", ticketController.getTicket)
+router.put("/:id", ticketController.updateTicket)
+router.delete("/:id", ticketController.deleteTicket)
 
 module.exports = router;
